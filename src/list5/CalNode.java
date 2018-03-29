@@ -12,12 +12,16 @@ import java.util.HashMap;
  * @author MJOdorczuk
  */
 public abstract class CalNode {
-    protected final CalNode[] components;
+    protected CalNode[] components;
     protected final HashMap<Character,Double> variables;
-    CalNode(CalNode[] components, HashMap<Character,Double> variables)
+    public CalNode(CalNode[] components, HashMap<Character,Double> variables)
     {
         this.components = components;
         this.variables = variables;
+    }
+    public void setCalNode(CalNode[] components)
+    {
+        this.components = components;
     }
     public abstract double calculate();
     @Override

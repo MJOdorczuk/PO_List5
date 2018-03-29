@@ -9,12 +9,11 @@ package list5;
  *
  * @author MJOdorczuk
  */
-public class Corporal extends Rank{
+public class Major extends Rank{
 
     @Override
-    public int compareTo(Object o) {
-        if(o instanceof Corporal) return 1;
-        return -1;
+    public double rank() {
+        return 3;
     }
     
 }

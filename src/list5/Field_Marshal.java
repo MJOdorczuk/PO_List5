@@ -12,9 +12,7 @@ package list5;
 public class Field_Marshal extends Rank {
 
     @Override
-    public int compareTo(Object o) {
-        if(o instanceof Field_Marshal) return 1;
-        return -1;
+    public double rank() {
+        return 10;
     }
-    
 }

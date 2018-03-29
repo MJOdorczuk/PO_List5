@@ -8,9 +8,25 @@ package list5;
 /**
  *
  * @author MJOdorczuk
+ * 
+ * Implemented ranks are Field Marshal, Lieutenant, Major and Brigadier
  */
 public abstract class Rank implements Comparable {
 
+    //Everything that is not of type Rank has lower rank than Rank objects
+    //1 means that the rank of this first object is higher
+    //0 means that both ranks are equivalent
+    //-1 means that the rank of this first object is lower
     @Override
-    public abstract int compareTo(Object o);
+    public int compareTo(Object o){
+        if(o instanceof Rank) return this.compareTo(o);
+        return -1;
+    }
+    public int compareTo(Rank o){
+        if(this.rank() > o.rank()) return 1;
+        if(this.rank() == o.rank()) return 0;
+        return -1;
+    }
+    //The higher value of rank() the higher the rank.
+    public abstract double rank();
 }
