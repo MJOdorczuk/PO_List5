@@ -5,6 +5,8 @@
  */
 package list5;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 /**
@@ -12,16 +14,22 @@ import java.util.HashMap;
  * @author MJOdorczuk
  */
 public abstract class CalNode {
-    protected CalNode[] components;
+    protected ArrayList<CalNode> components;
     protected final HashMap<Character,Double> variables;
     public CalNode(CalNode[] components, HashMap<Character,Double> variables)
     {
-        this.components = components;
+        this.components.clear();
+        this.components.addAll(Arrays.asList(components));
         this.variables = variables;
     }
     public void setCalNode(CalNode[] components)
     {
-        this.components = components;
+        this.components.clear();
+        this.components.addAll(Arrays.asList(components));
+    }
+    public void addCalNode(CalNode component)
+    {
+        this.components.add(component);
     }
     public abstract double calculate();
     @Override

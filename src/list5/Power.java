@@ -19,20 +19,20 @@ public class Power extends CalNode{
 
     @Override
     public double calculate() {
-        if(components.length == 0) return 1;
-        double ret = components[0].calculate();
-        for (int i=1; i<components.length; i++) {
-            Math.pow(ret, components[i].calculate());
+        if(components.isEmpty()) return 1;
+        double ret = components.get(0).calculate();
+        for (int i=1; i<components.size(); i++) {
+            Math.pow(ret, components.get(i).calculate());
         }
         return ret;
     }
     @Override
     public String toString() {
         String ret = "";
-        if(components.length > 0) ret += "(" + components[0].toString() + ")";
-        for(int i=1; i<components.length; i++)
+        if(components.size() > 0) ret += "(" + components.get(0).toString() + ")";
+        for(int i=1; i<components.size(); i++)
         {
-            ret += "^(" + components[i].toString() + ")";
+            ret += "^(" + components.get(i).toString() + ")";
         }
         return ret;
     }

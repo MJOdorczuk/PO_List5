@@ -30,10 +30,10 @@ public class Sum extends CalNode{
     @Override
     public String toString() {
         String ret = "";
-        if(components.length > 0) ret += "(" + components[0].toString() + ")";
-        for(int i=1; i<components.length; i++)
+        if(!components.isEmpty()) ret += "(" + components.get(0).toString() + ")";
+        for(int i=1; i<components.size(); i++)
         {
-            ret += "+(" + components[i].toString() + ")";
+            ret += "+(" + components.get(i).toString() + ")";
         }
         return ret;
     }

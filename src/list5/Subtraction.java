@@ -18,16 +18,16 @@ public class Subtraction extends CalNode {
     
     @Override
     public double calculate() {
-        if(components.length > 1) return components[0].calculate() - components[1].calculate();
-        if(components.length == 1) return components[0].calculate();
+        if(components.size() > 1) return components.get(0).calculate() - components.get(1).calculate();
+        if(components.size() == 1) return components.get(0).calculate();
         return 0;
     }
 
     @Override
     public String toString() {
         String ret = "";
-        if(components.length > 0) ret += "(" + components[0].toString() + ")";
-        if(components.length > 1) ret += "-(" + components[1].toString() + ")";
+        if(!components.isEmpty()) ret += "(" + components.get(0).toString() + ")";
+        if(components.size() > 1) ret += "-(" + components.get(1).toString() + ")";
         return ret;
     }
 }
