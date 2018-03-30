@@ -15,5 +15,10 @@ public class Major extends Rank{
     public double rank() {
         return 3;
     }
+    @Override
+    public String toString()
+    {
+        return "Major";
+    }
     
 }

@@ -5,8 +5,6 @@
  */
 package list5;
 
-import java.util.HashMap;
-
 /**
  *
  * @author MJOdorczuk
@@ -14,13 +12,13 @@ import java.util.HashMap;
 public class Constant extends CalNode{
 
     private final Double constant;
-    public Constant(CalNode[] components, HashMap<Character,Double> variables, Double constant) {
-        super(components, variables);
+    public Constant(CalNode[] components, Double constant) {
+        super(components);
         this.constant = constant;
     }
 
     @Override
-    public double calculate() {
+    public Double calculate() {
         return constant;
     }
 

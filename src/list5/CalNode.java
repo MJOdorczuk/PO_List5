@@ -15,12 +15,13 @@ import java.util.HashMap;
  */
 public abstract class CalNode {
     protected ArrayList<CalNode> components;
-    protected final HashMap<Character,Double> variables;
-    public CalNode(CalNode[] components, HashMap<Character,Double> variables)
+    protected HashMap<Character,Double> variables;
+    public CalNode(CalNode[] components)
     {
-        this.components.clear();
-        this.components.addAll(Arrays.asList(components));
-        this.variables = variables;
+        this.components = new ArrayList<>();
+        if(components != null)
+            this.components.addAll(Arrays.asList(components));
+        variables = null;
     }
     public void setCalNode(CalNode[] components)
     {
@@ -30,8 +31,24 @@ public abstract class CalNode {
     public void addCalNode(CalNode component)
     {
         this.components.add(component);
+        component.setVariableMap(variables);
     }
-    public abstract double calculate();
+    public abstract Double calculate();
     @Override
     public abstract String toString();
+    public void setVariableMap(HashMap<Character,Double> variables)
+    {
+        this.variables = variables;
+        components.forEach((component) -> {
+            component.setVariableMap(variables);
+        });
+    }
+    public void addVariable(Character key, Double value)
+    {
+        this.variables.put(key, value);
+    }
+    public HashMap<Character, Double> getVariables()
+    {
+        return this.variables;
+    }
 }

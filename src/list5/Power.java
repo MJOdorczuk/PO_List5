@@ -5,24 +5,22 @@
  */
 package list5;
 
-import java.util.HashMap;
-
 /**
  *
  * @author MJOdorczuk
  */
 public class Power extends CalNode{
     
-    public Power(CalNode[] components, HashMap<Character,Double> variables) {
-        super(components, variables);
+    public Power(CalNode[] components) {
+        super(components);
     }
 
     @Override
-    public double calculate() {
-        if(components.isEmpty()) return 1;
+    public Double calculate() {
+        if(components.isEmpty()) return 1.;
         double ret = components.get(0).calculate();
         for (int i=1; i<components.size(); i++) {
-            Math.pow(ret, components.get(i).calculate());
+            ret = Math.pow(ret, components.get(i).calculate());
         }
         return ret;
     }

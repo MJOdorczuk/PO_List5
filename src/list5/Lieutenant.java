@@ -16,5 +16,9 @@ public class Lieutenant extends Rank {
     {
         return 1;
     }
-    
+    @Override
+    public String toString()
+    {
+        return "Lieutenant";
+    }
 }

@@ -5,8 +5,6 @@
  */
 package list5;
 
-import java.util.HashMap;
-
 /**
  *
  * @author MJOdorczuk
@@ -14,13 +12,13 @@ import java.util.HashMap;
 public class Variable extends CalNode {
     
     private final Character Variable_Name;
-    public Variable(CalNode[] components, HashMap<Character,Double> variables, Character Variable_Name) {
-        super(components, variables);
+    public Variable(CalNode[] components, Character Variable_Name) {
+        super(components);
         this.Variable_Name = Variable_Name;
     }
 
     @Override
-    public double calculate() {
+    public Double calculate() {
         return this.variables.get(Variable_Name);
     }
 

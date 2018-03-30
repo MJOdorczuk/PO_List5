@@ -15,5 +15,9 @@ public class Brigadier extends Rank{
     public double rank() {
         return 6;
     }
-    
+    @Override
+    public String toString()
+    {
+        return "Brigadier";
+    }
 }

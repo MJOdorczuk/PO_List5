@@ -5,8 +5,6 @@
  */
 package list5;
 
-import java.util.HashMap;
-
 
 /**
  *
@@ -14,16 +12,14 @@ import java.util.HashMap;
  */
 public class Sum extends CalNode{
     
-    public Sum(CalNode[] components, HashMap<Character,Double> variables) {
-        super(components, variables);
+    public Sum(CalNode[] components) {
+        super(components);
     }
     
     @Override
-    public double calculate() {
+    public Double calculate() {
         double sum = 0;
-        for (CalNode component : components) {
-            sum += component.calculate();
-        }
+        sum = components.stream().map((component) -> component.calculate()).reduce(sum, (accumulator, _item) -> accumulator + _item);
         return sum;
     }
 

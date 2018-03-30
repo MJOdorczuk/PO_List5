@@ -5,22 +5,20 @@
  */
 package list5;
 
-import java.util.HashMap;
-
 /**
  *
  * @author MJOdorczuk
  */
 public class Subtraction extends CalNode {
-    public Subtraction(CalNode[] components, HashMap<Character,Double> variables) {
-        super(components, variables);
+    public Subtraction(CalNode[] components) {
+        super(components);
     }
     
     @Override
-    public double calculate() {
+    public Double calculate() {
         if(components.size() > 1) return components.get(0).calculate() - components.get(1).calculate();
         if(components.size() == 1) return components.get(0).calculate();
-        return 0;
+        return 0.;
     }
 
     @Override

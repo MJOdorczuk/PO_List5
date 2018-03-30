@@ -15,4 +15,9 @@ public class Field_Marshal extends Rank {
     public double rank() {
         return 10;
     }
+    @Override
+    public String toString()
+    {
+        return "Field_Marshal";
+    }
 }

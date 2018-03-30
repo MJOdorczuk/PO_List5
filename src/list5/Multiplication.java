@@ -4,25 +4,20 @@
  * and open the template in the editor.
  */
 package list5;
-
-import java.util.HashMap;
-
 /**
  *
  * @author MJOdorczuk
  */
 public class Multiplication extends CalNode{
 
-    public Multiplication(CalNode[] components, HashMap<Character,Double> variables) {
-        super(components, variables);
+    public Multiplication(CalNode[] components) {
+        super(components);
     }
 
     @Override
-    public double calculate() {
+    public Double calculate() {
         double ret = 1;
-        for (CalNode component : components) {
-            ret *= component.calculate();
-        }
+        ret = components.stream().map((component) -> component.calculate()).reduce(ret, (accumulator, _item) -> accumulator * _item);
         return ret;
     }
     @Override

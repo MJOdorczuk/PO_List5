@@ -35,4 +35,9 @@ public class Element<T extends Comparable> {
     {
         return this.value.compareTo(comp);
     }
+    @Override
+    public String toString()
+    {
+        return this.value.toString();
+    }
 }

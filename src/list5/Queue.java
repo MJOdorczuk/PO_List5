@@ -16,14 +16,33 @@ public class Queue<T extends Comparable> {
     public void join(T elem)
     {
         Element<T> temp = this.least;
-        if(this.least == null) this.least = new Element<>(elem, null);
+        if(temp == null) this.least = new Element<>(elem, null);
         else
         {
-            while(temp.compareTo(elem) < 0)
+            if(temp.compareTo(elem) > 0)
             {
-                temp = temp.bigger();
+                this.least = new Element<>(elem, temp);
             }
-            temp.bigger(new Element<>(elem, temp.bigger()));
+            else if(temp.bigger() == null)
+            {
+                temp.bigger(new Element<>(elem,null));
+            }
+            else
+            {
+                Element<T> next = temp.bigger();
+                while(next!=null)
+                {
+                    if(next.compareTo(elem) > 0)
+                    {
+                        temp.bigger(new Element<>(elem,next));
+                        return;
+                    }
+                    temp = next;
+                    next = next.bigger();
+                }
+                temp.bigger(new Element<>(elem,null));
+            }
+            
         }
     }
     public T get()
@@ -32,5 +51,16 @@ public class Queue<T extends Comparable> {
         this.least = this.least.bigger();
         return ret;
     }
-    
+    @Override
+    public String toString()
+    {
+        Element<T> temp = this.least;
+        String ret = "";
+        while(temp!=null)
+        {
+            ret += temp.toString() + "\n";
+            temp = temp.bigger();
+        }
+        return ret;
+    }
 }
